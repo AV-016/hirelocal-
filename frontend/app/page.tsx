@@ -62,9 +62,29 @@ export default function LandingPage() {
   const skills = ['Plumber', 'Electrician', 'Painter', 'Carpenter', 'Cleaner', 'Mechanic']
 
   return (
-    <div className="flex flex-col min-h-screen relative">
+    <div className="flex flex-col min-h-screen relative overflow-hidden">
       {/* Global Background Decorations */}
       <div className="fixed inset-0 -z-10 bg-grid-pattern opacity-[0.02]" />
+      
+      {/* Animated Floating Background Icons */}
+      <div className="fixed inset-0 -z-20 overflow-hidden pointer-events-none">
+        <div className="absolute top-[10%] left-[5%] animate-float-slow opacity-[0.03] text-primary">
+          <Zap size={120} />
+        </div>
+        <div className="absolute top-[60%] left-[15%] animate-float-medium opacity-[0.02] text-blue-500">
+          <Search size={150} />
+        </div>
+        <div className="absolute top-[20%] right-[10%] animate-float-slow opacity-[0.03] text-primary">
+          <ShieldCheck size={140} />
+        </div>
+        <div className="absolute top-[70%] right-[20%] animate-float-medium opacity-[0.02] text-blue-500">
+          <Star size={100} />
+        </div>
+        <div className="absolute top-[40%] left-[40%] animate-float-slow opacity-[0.01] text-foreground">
+          <Users size={200} />
+        </div>
+      </div>
+
       <div className="fixed top-0 left-0 -z-10 h-[1000px] w-[1000px] bg-primary/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 animate-pulse" />
       <div className="fixed bottom-0 right-0 -z-10 h-[800px] w-[800px] bg-blue-500/5 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2" />
       

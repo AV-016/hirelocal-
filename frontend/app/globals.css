@@ -152,9 +152,18 @@
     background-size: 24px 24px;
   }
 
-  .bg-blob {
-    filter: blur(80px);
-    opacity: 0.15;
-    z-index: -1;
+  @keyframes floatSlow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(5deg); }
+  }
+  @keyframes floatMedium {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(-5deg); }
+  }
+  .animate-float-slow {
+    animation: floatSlow 15s ease-in-out infinite;
+  }
+  .animate-float-medium {
+    animation: floatMedium 10s ease-in-out infinite;
   }
 }
