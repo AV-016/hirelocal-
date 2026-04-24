@@ -1,17 +1,16 @@
-# HireLocal 🏠⚡
+# HireLocal 
 
 **HireLocal** is a modern, hyperlocal service booking platform designed to connect homeowners with verified local experts (Plumbers, Electricians, Painters, etc.) in minutes.
 
-![HireLocal Banner](https://images.unsplash.com/photo-1581578731548-c64695cc6958?auto=format&fit=crop&q=80&w=1200&h=400)
 
-## 🚀 Live Demo
-- **Frontend**: [Deployed on Vercel](https://your-vercel-link.vercel.app)
+##  Live Demo
+- **Frontend**: [Deployed on Vercel](https://hirelocal-gilt.vercel.app/)
 - **Backend**: [Deployed on Render](https://hirelocal-api.onrender.com)
 - **Database**: Hosted on Supabase (PostgreSQL)
 
 ---
 
-## ✨ Key Features
+##  Key Features
 - **Smart Search**: Find experts by Pincode and Service Category (Electrician, Plumber, etc.).
 - **Dual Dashboards**: Dedicated interfaces for Customers (to manage bookings) and Workers (to manage jobs and earnings).
 - **Real-time Stats**: Track total earnings, average ratings, and active job counts.
@@ -21,7 +20,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 - **Frontend**: Next.js 15, TypeScript, Tailwind CSS, Lucide Icons, Shadcn/UI.
 - **Backend**: Node.js, Express.js, PostgreSQL (pg).
 - **Database**: Supabase (Managed PostgreSQL).
@@ -30,7 +29,7 @@
 
 ---
 
-## 📦 Installation & Setup
+##  Installation & Setup
 
 ### 1. Clone the repository
 ```bash
@@ -70,7 +69,7 @@ npm run dev
 
 ---
 
-## ☁️ Deployment
+##  Deployment
 
 ### Backend (Render/Railway)
 - Root Directory: `backend`
@@ -85,9 +84,6 @@ npm run dev
 
 ---
 
-## 📝 License
+##  License
 This project is licensed under the MIT License.
 
----
-
-**Built with ❤️ by [AV-016](https://github.com/AV-016)**
