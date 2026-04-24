@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Search, MapPin, ShieldCheck, Zap, Users, Star, ArrowRight, Play } from 'lucide-react'
@@ -13,6 +13,7 @@ import {
   SelectTrigger, 
   SelectValue 
 } from '@/components/ui/select'
+import { toast } from 'sonner'
 
 export default function LandingPage() {
   const router = useRouter()
