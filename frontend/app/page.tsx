@@ -19,11 +19,43 @@ export default function LandingPage() {
   const [pincode, setPincode] = useState('')
   const [skill, setSkill] = useState('')
 
+  const [supportedPincodes, setSupportedPincodes] = useState<string[]>([])
+
+  useEffect(() => {
+    async function fetchPincodes() {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/workers/pincodes`)
+        if (response.ok) {
+          const data = await response.json()
+          setSupportedPincodes(data)
+        }
+      } catch (err) {
+        console.error('Failed to fetch pincodes:', err)
+      }
+    }
+    fetchPincodes()
+  }, [])
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
-    if (pincode.length === 6 && skill) {
-      router.push(`/search?pincode=${pincode}&skill=${skill}`)
+    if (!pincode || !skill) {
+      toast.error('Please enter both Pincode and Service Type')
+      return
     }
+
+    if (pincode.length !== 6) {
+      toast.error('Pincode must be exactly 6 digits')
+      return
+    }
+
+    if (!supportedPincodes.includes(pincode)) {
+      toast.error(`Service not available in ${pincode} yet.`, {
+        description: 'Try 824101 or 823001 for testing.'
+      })
+      return
+    }
+
+    router.push(`/search?pincode=${pincode}&skill=${skill}`)
   }
 
   const skills = ['Plumber', 'Electrician', 'Painter', 'Carpenter', 'Cleaner', 'Mechanic']
@@ -64,7 +96,7 @@ export default function LandingPage() {
                     className="border-0 bg-transparent p-0 text-lg focus-visible:ring-0" 
                     maxLength={6}
                     value={pincode}
-                    onChange={(e) => setPincode(e.target.value.replace(/\D/g, ''))}
+                    onChange={(e) => setPincode(e.target.value.replace(/\D/g, '').slice(0, 6))}
                   />
                 </div>
                 <div className="h-8 w-px bg-border hidden sm:block" />
@@ -86,6 +118,12 @@ export default function LandingPage() {
                   Search
                 </Button>
               </form>
+
+              {supportedPincodes.length > 0 && (
+                <p className="mt-3 text-xs text-muted-foreground animate-fade-in">
+                  Popular: {supportedPincodes.slice(0, 3).join(', ')}
+                </p>
+              )}
             </div>
 
             <div className="mt-12 flex items-center justify-center gap-x-8 animate-fade-in" style={{ animationDelay: '0.5s' }}>

@@ -4,6 +4,17 @@ const router = express.Router();
 const db = require('../db');
 const auth = require('../middleware/auth');
 
+// GET /pincodes (public)
+router.get('/pincodes', async (req, res) => {
+  try {
+    const result = await db.query('SELECT DISTINCT pincode FROM users WHERE role = \'worker\'');
+    res.json(result.rows.map(row => row.pincode));
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 // GET /search?pincode=&skill=
 router.get('/search', async (req, res) => {
   const { pincode, skill } = req.query;
